@@ -1,17 +1,6 @@
-/*
-Treehouse Techdegree:
-FSJS Project 2 - Data Pagination and Filtering
-*/
-
-
-
-/*
-For assistance:
-   Check out the "Project Resources" section of the Instructions tab: https://teamtreehouse.com/projects/data-pagination-and-filtering#instructions
-   Reach out in your Slack community: https://treehouse-fsjs-102.slack.com/app_redirect?channel=unit-2
-*/
-
-
+/* ============================================= */
+/*                   Script                      */
+/* ============================================= */
 
 /*
 Create the `showPage` function
@@ -43,8 +32,6 @@ function showPage(list, page) {
    studentList.insertAdjacentHTML('beforeend', htmlList);
 }
 
-showPage(data, 1);
-
 /*
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
@@ -55,16 +42,19 @@ function addPagination(list) {
    linkList.innerHTML = '';
    for (let i = 0; i < numOfPages; i++) {
       linkList.innerHTML += `<li>
-      <button type="button">${i}</button>
+      <button type="button">${i + 1}</button>
     </li>`
    }
-   document.querySelectorAll('li.button'[0]).className = 'active';
+   document.querySelector('BUTTON').className = 'active';
    linkList.addEventListener('click', (e) => {
-      if (e.target === "BUTTON") {
-         linkList.children.className.remove('.active')
+      if (e.target = "BUTTON") {
+         document.querySelector('.active').className = '';
+         e.target.className = 'active';
+         showPage(data, e.target.textContent);
       }
    });
 }
 
-addPagination(data);
 // Call functions
+showPage(data, 1);
+addPagination(data);
