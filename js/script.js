@@ -55,19 +55,33 @@ function addPagination(list) {
    });
 }
 
-//Adds Searchbar
-function searchbar() {
+//Adds Searchbar and creates a new array based on search value
+function searchbar(list) {
    const header = document.querySelector('.header');
    let htmlSearch = `
    <label for="search" class="student-search">
    <input id="search" placeholder="Search by name...">
-   <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
+   <button class="search-button" type="button"><img class="search-button" src="img/icn-search.svg" alt="Search icon"></button>
    </label>
    `
    header.insertAdjacentHTML('beforeend', htmlSearch);
+
+   document.querySelector('LABEL').addEventListener('click', (e) => {
+      if (e.target.className === 'search-button') {
+         let search = document.querySelector('#search').value.toLowerCase();
+         let searchArray = [];
+         for (let i = 0; i < list.length; i++) {
+            if (list[i].name.first.toLowerCase().includes(search) || list[i].name.last.toLowerCase().includes(search)) {
+               searchArray.push(list[i])
+            }
+         }
+         showPage(searchArray, 1);
+         addPagination(searchArray);
+      }
+   });
 }
 
 // Call functions
 showPage(data, 1);
 addPagination(data);
-searchbar();
+searchbar(data);
