@@ -47,7 +47,7 @@ function addPagination(list) {
    }
    document.querySelector('.page-button').className = 'active';
    linkList.addEventListener('click', (e) => {
-      if (e.target = "BUTTON") {
+      if (e.target.type === "button") {
          document.querySelector('.active').className = '';
          e.target.className = 'active';
          showPage(list, e.target.textContent);
