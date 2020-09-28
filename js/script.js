@@ -56,6 +56,8 @@ function addPagination(list) {
 }
 
 //Adds Searchbar and creates a new array based on search value
+//checks to see if search matches array items and displays a message if nothing matches
+//calls showPage() and addPagination() with the new array
 function searchbar(list) {
    const header = document.querySelector('.header');
    let htmlSearch = `
@@ -81,6 +83,9 @@ function searchbar(list) {
                if (list[i].name.first.toLowerCase().includes(search) || list[i].name.last.toLowerCase().includes(search)) {
                   searchArray.push(list[i])
                }
+            }
+            if (searchArray.length === 0) {
+               page.insertAdjacentHTML('beforeend', `<h3 class="no-results">No results found</h3>`);
             }
          }
          showPage(searchArray, 1);
