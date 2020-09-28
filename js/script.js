@@ -26,7 +26,7 @@ function showPage(list, page) {
                   <span class="date">Joined 12-15-2005</span>
                </div>
             </li>
-            `
+            `;
       }
    }
    studentList.insertAdjacentHTML('beforeend', htmlList);
@@ -65,9 +65,10 @@ function searchbar(list) {
    <input id="search" placeholder="Search by name...">
    <button class="search-button" type="button"><img class="search-button" src="img/icn-search.svg" alt="Search icon"></button>
    </label>
-   `
+   `;
    header.insertAdjacentHTML('beforeend', htmlSearch);
 
+   //Adds listener on click
    document.querySelector('LABEL').addEventListener('click', (e) => {
       const studentList = document.querySelector('ul.student-list');
       const page = document.querySelector('.page');
@@ -81,7 +82,7 @@ function searchbar(list) {
             noResults.forEach(element => element.remove());
             for (let i = 0; i < list.length; i++) {
                if (list[i].name.first.toLowerCase().includes(search) || list[i].name.last.toLowerCase().includes(search)) {
-                  searchArray.push(list[i])
+                  searchArray.push(list[i]);
                }
             }
             if (searchArray.length === 0) {
@@ -92,6 +93,8 @@ function searchbar(list) {
          addPagination(searchArray);
       }
    });
+
+   //Adds listener on keyup
    document.querySelector('#search').addEventListener('keyup', (e) => {
       const studentList = document.querySelector('ul.student-list');
       const page = document.querySelector('.page');
@@ -101,7 +104,7 @@ function searchbar(list) {
             noResults.forEach(element => element.remove());
             for (let i = 0; i < list.length; i++) {
                if (list[i].name.first.toLowerCase().includes(search) || list[i].name.last.toLowerCase().includes(search)) {
-                  searchArray.push(list[i])
+                  searchArray.push(list[i]);
                }
             }
             if (searchArray.length === 0) {
