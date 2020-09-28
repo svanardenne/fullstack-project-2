@@ -50,7 +50,7 @@ function addPagination(list) {
       if (e.target = "BUTTON") {
          document.querySelector('.active').className = '';
          e.target.className = 'active';
-         showPage(data, e.target.textContent);
+         showPage(list, e.target.textContent);
       }
    });
 }
