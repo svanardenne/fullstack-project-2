@@ -42,10 +42,10 @@ function addPagination(list) {
    linkList.innerHTML = '';
    for (let i = 0; i < numOfPages; i++) {
       linkList.innerHTML += `<li>
-      <button type="button">${i + 1}</button>
+      <button class="page-button" type="button">${i + 1}</button>
     </li>`
    }
-   document.querySelector('BUTTON').className = 'active';
+   document.querySelector('.page-button').className = 'active';
    linkList.addEventListener('click', (e) => {
       if (e.target = "BUTTON") {
          document.querySelector('.active').className = '';
