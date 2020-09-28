@@ -67,12 +67,23 @@ function searchbar(list) {
    header.insertAdjacentHTML('beforeend', htmlSearch);
 
    document.querySelector('LABEL').addEventListener('click', (e) => {
+      const studentList = document.querySelector('ul.student-list');
+      const page = document.querySelector('.page');
       if (e.target.className === 'search-button') {
          let search = document.querySelector('#search').value.toLowerCase();
          let searchArray = [];
-         for (let i = 0; i < list.length; i++) {
-            if (list[i].name.first.toLowerCase().includes(search) || list[i].name.last.toLowerCase().includes(search)) {
-               searchArray.push(list[i])
+         if (search === '') {
+           page.insertAdjacentHTML('beforeend', `<h3 class="no-results">No results found</h3>`);
+           addPagination(0);
+         } else {
+            const noResults = document.querySelectorAll('.no-results');
+            if (noResults) {
+               noResults.forEach(element => element.remove());
+            }
+            for (let i = 0; i < list.length; i++) {
+               if (list[i].name.first.toLowerCase().includes(search) || list[i].name.last.toLowerCase().includes(search)) {
+                  searchArray.push(list[i])
+               }
             }
          }
          showPage(searchArray, 1);
