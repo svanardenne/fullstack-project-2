@@ -92,6 +92,24 @@ function searchbar(list) {
          addPagination(searchArray);
       }
    });
+   document.querySelector('#search').addEventListener('keyup', (e) => {
+      const studentList = document.querySelector('ul.student-list');
+      const page = document.querySelector('.page');
+         let search = document.querySelector('#search').value.toLowerCase();
+         let searchArray = [];
+            const noResults = document.querySelectorAll('.no-results');
+            noResults.forEach(element => element.remove());
+            for (let i = 0; i < list.length; i++) {
+               if (list[i].name.first.toLowerCase().includes(search) || list[i].name.last.toLowerCase().includes(search)) {
+                  searchArray.push(list[i])
+               }
+            }
+            if (searchArray.length === 0) {
+               page.insertAdjacentHTML('beforeend', `<h3 class="no-results">No results found</h3>`);
+            }
+         showPage(searchArray, 1);
+         addPagination(searchArray);
+   });
 }
 
 // Call functions
